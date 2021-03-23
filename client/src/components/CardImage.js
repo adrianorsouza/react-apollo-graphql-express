@@ -8,6 +8,8 @@ const CardImage = ({ src, name }) => {
           src={src}
           alt={name}
           className="w-32 h-32 rounded-full mx-auto ring-4 ring-offset-4 absolute inset-1/4"
+          width={128}
+          height={128}
         />
       </picture>
     </div>

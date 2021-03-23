@@ -8,9 +8,10 @@ import reportWebVitals from './reportWebVitals';
 // import "@fontsource/raleway"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  // Removed due Warning: findDOMNode is deprecated in caused by react-transition-group
+  // <React.StrictMode>
+    <App />,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 
