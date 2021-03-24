@@ -1,24 +1,38 @@
-const express = require("express");
-const morgan = require('morgan')
-const { ApolloServer } = require("apollo-server-express");
-const { typeDefs, resolvers } = require("./schema");
+const express = require('express');
+const morgan = require('morgan');
+const UserAPI = require('./api/UserAPI');
+const { ApolloServer } = require('apollo-server-express');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers');
 
 const app = express();
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => {
+    return {
+      usersAPI: new UserAPI(),
+    };
+  },
+});
 
 server.applyMiddleware({ app });
 
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+// Log middleware
+app.use(
+  morgan(':method :url :status :res[content-length] - :response-time ms')
+);
 
-// show the entire db.json
-app.get("/users", (req, res) => {
-  res.json(require("./data/db.json"));
+// this route mimic a REST API that we can use as DataSourceREST for GraphQL
+app.get('/api/users', (req, res) => {
+  res.json(require('./db/users.json'));
 });
 
+// Fallback route
 app.use((req, res) => {
-  res.status(200);
-  res.send("Not Found");
+  res.status(404);
+  res.send('Not Found X');
   res.end();
 });
 
