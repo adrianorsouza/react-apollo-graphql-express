@@ -27,7 +27,7 @@ const Home = (props) => {
     },
   });
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error.message}</div>;
 
   if (loading) return <div>{JSON.stringify(loading)}</div>;
 
