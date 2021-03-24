@@ -6,6 +6,7 @@ import FriendsList from './pages/FriendsList';
 import Layout from './containers/Layout';
 import { client } from './graphql/client';
 import NoMatch from "./pages/NoMatch";
+import ConnectivityListener from "./containers/ConnectivityListener";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           </Switch>
         </Layout>
       </Router>
+      <ConnectivityListener />
     </ApolloProvider>
   );
 }
