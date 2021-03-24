@@ -9,6 +9,7 @@ const FETCH_USER = gql`
     user(id: $id) {
       _id
       name
+      email
       picture
       age
       eyeColor
@@ -33,7 +34,6 @@ const FriendsList = (props) => {
   const { data, loading, error } = useQuery(FETCH_USER, {
     variables: { id },
     fetchPolicy: 'cache-first',
-    // pollInterval: 1000,
   });
 
   if (loading) return <div>loading ..</div>;
@@ -43,7 +43,8 @@ const FriendsList = (props) => {
   const { picture, name, email, age, friends } = data.user;
 
   const handleGoBackClick = (event) => {
-    history.push('/');
+    event.preventDefault();
+    history.goBack();
   };
 
   return (

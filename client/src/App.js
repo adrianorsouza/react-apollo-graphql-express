@@ -3,14 +3,15 @@ import { ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import FriendsList from './pages/FriendsList';
-import Layout from './components/Layout';
+import Layout from './containers/Layout';
 import { client } from './graphql/client';
+import NoMatch from "./pages/NoMatch";
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Layout>
-        <Router>
+      <Router>
+        <Layout>
           <Switch>
             <Route exact path="/">
               <Home />
@@ -19,11 +20,11 @@ function App() {
               <FriendsList />
             </Route>
             <Route>
-              <h1>Page Not Found!</h1>
+              <NoMatch />
             </Route>
           </Switch>
-        </Router>
-      </Layout>
+        </Layout>
+      </Router>
     </ApolloProvider>
   );
 }
