@@ -14,18 +14,6 @@ const typeDefs = gql`
     friends: [Friend]
   }
 
-  type Users {
-    _id: String
-    index: String
-    picture: String
-    age: Int
-    name(name: String): String
-    email: String
-    eyeColor: String
-    company: String
-    friends: [Friend]
-  }
-
   type Friend {
     _id: String
     index: String
@@ -38,7 +26,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    list(name: String): [Users]
+    list(name: String): [User]
     user(id: String!): User
   }
 `;
