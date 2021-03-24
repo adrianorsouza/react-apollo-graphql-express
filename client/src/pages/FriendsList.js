@@ -1,16 +1,46 @@
 import React from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import data from '../db.json';
 import Card from '../components/Card';
 import ContentWrapper from '../containers/ContentWrapper';
+import { gql, useQuery } from '@apollo/client';
 
-const Profile = (props) => {
+const FETCH_USER = gql`
+  query UserDetail($id: String!) {
+    user(id: $id) {
+      _id
+      name
+      picture
+      age
+      eyeColor
+      company
+      friends {
+        _id
+        name
+        picture
+        company
+        age
+        eyeColor
+        email
+      }
+    }
+  }
+`;
+
+const FriendsList = (props) => {
   const { id } = useParams();
   const history = useHistory();
 
-  const { picture, name, email, age, friends } = data.filter(
-    (item) => item._id === id
-  )[0];
+  const { data, loading, error } = useQuery(FETCH_USER, {
+    variables: { id },
+    fetchPolicy: 'cache-first',
+    // pollInterval: 1000,
+  });
+
+  if (loading) return <div>loading ..</div>;
+  if (error) return <div>error {error.message}</div>;
+  if (!data) return <div>Not Found</div>;
+
+  const { picture, name, email, age, friends } = data.user;
 
   const handleGoBackClick = (event) => {
     history.push('/');
@@ -76,4 +106,4 @@ const Profile = (props) => {
   );
 };
 
-export default Profile;
+export default FriendsList;
