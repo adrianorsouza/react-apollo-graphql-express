@@ -6,7 +6,7 @@ import { TextFilterResult } from '../components';
 import Grid from '../containers/Grid';
 import UserCard from '../components/UserCard';
 import Alert from '../components/Alert';
-import HomePlaceholder from '../components/HomePlaceholder';
+import { HomePlaceholder } from '../components/Placeholders';
 
 const FETCH_USERS = gql`
   query Users($name: String) {

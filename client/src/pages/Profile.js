@@ -6,7 +6,7 @@ import { UserCard } from '../components';
 import styled from 'styled-components';
 import { colors } from '../styles';
 import Alert from '../components/Alert';
-import ProfilePlaceholder from '../components/ProfilePlaceholder';
+import {ProfilePlaceholder} from "../components/Placeholders";
 
 const FETCH_USER = gql`
   query UserDetail($id: String!) {
