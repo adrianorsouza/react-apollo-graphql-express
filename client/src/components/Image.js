@@ -28,7 +28,7 @@ const Picture = styled.picture`
   }
 `;
 
-const CardImage = ({ src, name, size }) => {
+const Image = ({ src, name, size }) => {
   let [w, h] = size === 'large' ? [200, 200] : [128, 128];
   return (
     <Picture size={size}>
@@ -37,11 +37,11 @@ const CardImage = ({ src, name, size }) => {
   );
 };
 
-CardImage.defaultProps = {
+Image.defaultProps = {
   size: 'normal',
 };
-CardImage.propTypes = {
+Image.propTypes = {
   size: PropTypes.oneOf(['normal', 'large']),
 };
 
-export default CardImage;
+export default Image;

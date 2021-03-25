@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { CardImage } from './';
+import { Image } from './';
 import { Card, CardHeader, CardBody } from '../containers';
 import { eyeColorMap } from '../utils/helpers';
 import { colors } from '../styles';
@@ -43,7 +43,7 @@ const UserCard = ({ user, ...props }) => {
   return (
     <Card>
       <CardHeader>
-        <CardImage src={picture} name={name} {...props} />
+        <Image src={picture} name={name} {...props} />
       </CardHeader>
       <CardBody>
         <BodyWrapper>
