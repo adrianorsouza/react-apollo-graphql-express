@@ -1,4 +1,7 @@
 export const colors = {
+  alert: {
+    error: `#840909`
+  },
   black: `#000000`,
   gray: {
     100: `#d1d5db`,

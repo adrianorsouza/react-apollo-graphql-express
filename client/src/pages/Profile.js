@@ -5,6 +5,8 @@ import { gql, useQuery } from '@apollo/client';
 import { UserCard } from '../components';
 import styled from 'styled-components';
 import { colors } from '../styles';
+import Alert from '../components/Alert';
+import ProfilePlaceholder from '../components/ProfilePlaceholder';
 
 const FETCH_USER = gql`
   query UserDetail($id: String!) {
@@ -72,10 +74,7 @@ const Profile = (props) => {
     fetchPolicy: 'cache-first',
   });
 
-  if (loading) return <div>loading ..</div>;
-  if (error) return <div>error {error.message}</div>;
-  if (!data) return <div>Not Found</div>;
-
+  if (error) return <Alert message={error.message} />;
   const handleGoBackClick = (event) => {
     event.preventDefault();
     history.goBack();
@@ -99,22 +98,29 @@ const Profile = (props) => {
         </Button>
         <Display1>Profile</Display1>
       </PageHeader>
-      <section>
-        <UserCard user={data.user} size="large" />
-      </section>
-      <section>
-        <SectionHeader>
-          <Display2>
-            {data.user.name.split(' ').shift()}'s Friends{' '}
-            <small>({data.user.friends.length})</small>
-          </Display2>
-        </SectionHeader>
-        <Grid cols={6}>
-          {data.user.friends.map((friend) => (
-            <UserCard key={friend._id} user={friend} />
-          ))}
-        </Grid>
-      </section>
+
+      <ProfilePlaceholder loading={loading} />
+
+      {data && data.user && (
+        <>
+          <section>
+            <UserCard user={data.user} size="large" />
+          </section>
+          <section>
+            <SectionHeader>
+              <Display2>
+                {data.user.name.split(' ').shift()}'s Friends{' '}
+                <small>({data.user.friends.length})</small>
+              </Display2>
+            </SectionHeader>
+            <Grid cols={6}>
+              {data.user.friends.map((friend) => (
+                <UserCard key={friend._id} user={friend} />
+              ))}
+            </Grid>
+          </section>
+        </>
+      )}
     </PageContainer>
   );
 };

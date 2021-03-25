@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { gql, useQuery } from '@apollo/client';
-import { PageContainer } from '../containers';
+import { Link, PageContainer } from '../containers';
 import { useSearchQuery } from '../hooks/useSearchQuery';
 import { TextFilterResult } from '../components';
 import Grid from '../containers/Grid';
 import UserCard from '../components/UserCard';
+import Alert from '../components/Alert';
+import HomePlaceholder from '../components/HomePlaceholder';
 
 const FETCH_USERS = gql`
   query Users($name: String) {
@@ -30,14 +31,13 @@ const Home = (props) => {
     },
   });
 
-  if (error) return <div>{error.message}</div>;
-
-  if (loading) return <div>{JSON.stringify(loading)}</div>;
+  if (error) return <Alert message={error.message} />;
 
   return (
     <>
       <PageContainer>
-        {search && <TextFilterResult search={search} data={data} />}
+        <HomePlaceholder loading={loading} />
+        {search && data && <TextFilterResult search={search} data={data} />}
         <Grid cols={6}>
           {data && !data.list.length && <p>Nenhum registro encontrado</p>}
           {data &&

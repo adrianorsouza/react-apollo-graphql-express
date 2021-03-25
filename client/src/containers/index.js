@@ -6,3 +6,4 @@ export { default as Container } from './Container';
 export { default as PageContainer } from './PageContainer';
 export { default as Grid } from './Grid';
 export { default as Layout } from './Layout';
+export { default as Link } from './Link';

@@ -26,7 +26,7 @@ app.use(
 
 // this route mimic a REST API that we can use as DataSourceREST for GraphQL
 app.get('/api/users', async (req, res) => {
-  // await new Promise(r => setTimeout(r, 4000));
+  await new Promise(r => setTimeout(r, 3000));
   res.json(require('./db/users.json'));
 });
 
