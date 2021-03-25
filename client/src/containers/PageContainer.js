@@ -1,7 +1,7 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-const ContentWrapper = ({ children }) => {
+const PageContainer = ({ children }) => {
   const [show, setShow] = React.useState(false);
 
   React.useEffect(() => {
@@ -11,14 +11,10 @@ const ContentWrapper = ({ children }) => {
   }, []);
 
   return (
-    <CSSTransition
-      in={show}
-      timeout={100}
-      classNames="page-transition"
-    >
+    <CSSTransition in={show} timeout={100} classNames="page-transition">
       <div className="main">{children}</div>
     </CSSTransition>
   );
 };
 
-export default ContentWrapper;
+export default PageContainer;

@@ -1,6 +1,47 @@
 import React from 'react';
+import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { useSearchQuery } from '../hooks/useSearchQuery';
+
+const SearchBoxContainer = styled.div`
+  position: relative;
+  form {
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    :after,
+    :before {
+      box-sizing: border-box;
+      border: 0 solid #e5e7eb;
+    }
+
+    svg {
+      position: absolute;
+      color: rgba(156, 163, 175, 0.8);
+      transform: translateY(-50%);
+      top: 50%;
+      left: 10px;
+    }
+    input {
+      width: 100%;
+      padding-left: 2.5rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      border-width: 2px;
+      &,
+      :focus {
+        border-radius: 7rem;
+        border-width: 2px;
+      }
+      :focus {
+        border-color: darkgray;
+        outline: 2px solid transparent;
+        outline-offset: 0;
+      }
+    }
+  }
+`;
 
 const SearchBox = (props) => {
   const history = useHistory();
@@ -28,14 +69,9 @@ const SearchBox = (props) => {
   };
 
   return (
-    <div className="relative">
-      <form className="mt-5 mb-5" noValidate onSubmit={handleSubmit}>
-        <svg
-          width="20"
-          height="20"
-          fill="currentColor"
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-        >
+    <SearchBoxContainer>
+      <form noValidate onSubmit={handleSubmit}>
+        <svg width="20" height="20" fill="currentColor">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -44,7 +80,6 @@ const SearchBox = (props) => {
         </svg>
         <input
           autoFocus
-          className="focus:border-light-blue-500 focus:ring-1 focus:ring-light-blue-500 focus:outline-none w-full text-sm text-black placeholder-gray-500 border border-gray-200 rounded-md py-2 pl-10"
           value={filter}
           id="filter"
           name="filter"
@@ -54,7 +89,7 @@ const SearchBox = (props) => {
           placeholder="Filtrar usuários"
         />
       </form>
-    </div>
+    </SearchBoxContainer>
   );
 };
 

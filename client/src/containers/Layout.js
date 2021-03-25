@@ -1,12 +1,13 @@
 import React from 'react';
-import Header from '../components/Header';
+import { Container } from './';
+import { Header } from '../components';
 
 const Layout = ({ children }) => {
   return (
-    <main className="md:container md:mx-auto p-5 sm:p-0 main">
+    <Container>
       <Header />
       {children}
-    </main>
+    </Container>
   );
 };
 

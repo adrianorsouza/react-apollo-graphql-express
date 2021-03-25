@@ -1,20 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import '~modern-normalize/modern-normalize.css';
 
-@layer utilities {
-  .page-transition-enter {
-    opacity: 0;
-  }
-  .page-transition-enter-active {
-    opacity: 1;
-    transition: opacity 200ms;
-  }
-  .page-transition-exit {
-    opacity: 1;
-  }
-  .page-transition-exit-active {
-    opacity: 0;
-    transition: opacity 200ms;
-  }
+body {
+  line-height: inherit;
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+img {
+  border-style: solid;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+blockquote,
+dd,
+dl,
+figure,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+pre {
+  margin: 0;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+.page-transition-enter {
+  opacity: 0;
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.page-transition-exit {
+  opacity: 1;
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }

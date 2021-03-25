@@ -2,11 +2,11 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import FriendsList from './pages/FriendsList';
-import Layout from './containers/Layout';
+import Profile from './pages/Profile';
+import { Layout } from './containers';
 import { client } from './graphql/client';
-import NoMatch from "./pages/NoMatch";
-import ConnectivityListener from "./containers/ConnectivityListener";
+import NoMatch from './pages/NoMatch';
+import ConnectivityListener from './containers/ConnectivityListener';
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
               <Home />
             </Route>
             <Route path="/profile/:id">
-              <FriendsList />
+              <Profile />
             </Route>
             <Route>
               <NoMatch />

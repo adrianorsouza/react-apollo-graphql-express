@@ -1,12 +1,21 @@
-import SearchBox from "./SearchBox";
-import React from "react";
+import SearchBox from './SearchBox';
+import React from 'react';
+import styled from 'styled-components';
+
+const HeaderContainer = styled.header`
+  padding-top: 1.25rem;
+  h1 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+`;
 
 const Header = (props) => {
   return (
-    <header>
-      <h1 className="text-lg pt-5">Social</h1>
+    <HeaderContainer>
+      <h1>Social</h1>
       <SearchBox />
-    </header>
+    </HeaderContainer>
   );
 };
 

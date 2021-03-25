@@ -15,7 +15,10 @@ export default class ConnectivityListener extends React.Component {
   handleOnlineStatus = (e) => {
     this.setState({
       isOnline: e.type !== 'offline',
-      content: e.type !== 'offline' ? this.message.connected : this.message.disconnected,
+      content:
+        e.type !== 'offline'
+          ? this.message.connected
+          : this.message.disconnected,
       type: e.type !== 'offline' ? 'SUCCESS' : 'ERROR',
     });
   };
@@ -42,6 +45,6 @@ export default class ConnectivityListener extends React.Component {
   render() {
     // NOTE:
     // ADD add a toast container here to render a message in the screen
-    return <p>{this.state.content}</p>
+    return <p>{this.state.content}</p>;
   }
 }

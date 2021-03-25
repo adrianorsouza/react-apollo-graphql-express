@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Card from '../components/Card';
-import ContentWrapper from '../containers/ContentWrapper';
 import { gql, useQuery } from '@apollo/client';
+import { PageContainer } from '../containers';
 import { useSearchQuery } from '../hooks/useSearchQuery';
+import { TextFilterResult } from '../components';
+import Grid from '../containers/Grid';
+import UserCard from '../components/UserCard';
 
 const FETCH_USERS = gql`
   query Users($name: String) {
     list(name: $name) {
       _id
       name
+      email
       picture
       age
       eyeColor
@@ -33,23 +36,9 @@ const Home = (props) => {
 
   return (
     <>
-      <ContentWrapper>
-        <div>
-          {search && (
-            <p className="text-gray-500 text-sm mb-5">
-              Sua pesquisa para{' '}
-              <span className="text-indigo-500">{search}</span> retornou{' '}
-              {(!data.list.length && 'nenhum resultado') || (
-                <>
-                  <strong>{data.list.length}</strong>
-                  {` `}
-                  {(data.list.length > 1 && `itens`) || `item`}
-                </>
-              )}
-            </p>
-          )}
-        </div>
-        <div className="grid gap-5 md:grid-cols-6">
+      <PageContainer>
+        {search && <TextFilterResult search={search} data={data} />}
+        <Grid cols={6}>
           {data && !data.list.length && <p>Nenhum registro encontrado</p>}
           {data &&
             data.list &&
@@ -59,11 +48,11 @@ const Home = (props) => {
                 to={`/profile/${user._id}`}
                 title={`Perfil de ${user.name}`}
               >
-                <Card user={user} />
+                <UserCard user={user} />
               </Link>
             ))}
-        </div>
-      </ContentWrapper>
+        </Grid>
+      </PageContainer>
     </>
   );
 };

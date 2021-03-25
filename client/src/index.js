@@ -11,7 +11,7 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   // Removed due Warning: findDOMNode is deprecated in caused by react-transition-group
   // <React.StrictMode>
-    <App />,
+  <App />,
   // </React.StrictMode>,
   document.getElementById('root')
 );
