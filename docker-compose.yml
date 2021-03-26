@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend
+    build: client
+    ports:
+      - 3000:80
+    restart: always
+    volumes:
+      - ./client:/usr/src/app
+    networks:
+      - react-graphql-net
+    depends_on:
+      - backend
+
+  backend:
+    container_name: backend
+    build: ./server
+    ports:
+      - 4000:4000
+    restart: always
+    volumes:
+      - ./server:/server
+      - /server/node_modules
+    networks:
+      - react-graphql-net
+
+networks:
+  react-graphql-net:
