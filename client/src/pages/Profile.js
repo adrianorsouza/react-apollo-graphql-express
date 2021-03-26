@@ -4,7 +4,6 @@ import { Grid, PageContainer } from '../containers';
 import { gql, useQuery } from '@apollo/client';
 import { UserCard } from '../components';
 import styled from 'styled-components';
-import { colors } from '../styles';
 import Alert from '../components/Alert';
 import {ProfilePlaceholder} from "../components/Placeholders";
 
@@ -56,7 +55,7 @@ const Display2 = styled.h2`
   line-height: 2rem;
   font-weight: 600;
   small {
-    color: ${colors.gray['100']};
+    color: var(--color-gray-100);
   }
 `;
 

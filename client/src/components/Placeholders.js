@@ -47,7 +47,7 @@ const TextRowStyled = styled.div`
   width: ${(props) => `${props.maxWidth}%`};
   display: block;
   height: ${(props) => `${props.maxHeight}rem`};
-  background: ${(props) => props.color || `var(--gray-light)`};
+  background: ${(props) => props.color || `var(--color-gray-light)`};
   margin: ${(props) => `${props.spacing}px`} 0;
   border-radius: var(--border-radius-default);
 `;

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { Image } from './';
 import { Card, CardHeader, CardBody } from '../containers';
 import { eyeColorMap } from '../utils/helpers';
-import { colors } from '../styles';
 
 const BodyWrapper = styled.div`
   line-height: 1.625;
@@ -14,28 +13,28 @@ const BodyWrapper = styled.div`
 
 const Heading1 = styled.h1`
   font-weight: 600;
-  color: ${colors.black};
+  color: var(--color-base-black);
 `;
 const Heading1Large = styled.h1`
   font-size: 1.875rem;
   line-height: 2.25rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: ${colors.black};
+  color: var(--color-base-black);
 `;
 
 const Paragraph = styled.p`
-  color: ${colors.gray['300']};
+  color: var(--color-gray-300);
   font-weight: 100;
   font-size: 0.875rem;
   line-height: 1.25rem;
 `;
 const TextCompany = styled.strong`
-  color: ${colors.gray['100']};
+  color: var(--color-gray-100);
 `;
 
 const TextEmail = styled.small`
-  color: ${colors.indigo['100']};
+  color: var(--color-indigo-100);
 `;
 
 const UserCard = ({ user, ...props }) => {

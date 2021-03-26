@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../styles';
 
 const AlertWrapper = styled.div`
-  background: ${colors.alert.error};
+  background: var(--color-alert-error);
   padding: 0.825rem;
-  color: ${colors.gray['100']};
+  color: var(--color-gray-100);
   border-radius: 0.25rem;
 `;
 

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { colors } from '../styles';
 
 const Paragraph = styled.p`
-  color: ${colors.gray['500']};
+  color: var(--color-gray-500);
   font-size: 0.875rem;
   margin-bottom: 1.25rem;
 
   span {
-    color: ${colors.indigo['500']};
+    color: var(--color-indigo-300);
   }
 `;
 
