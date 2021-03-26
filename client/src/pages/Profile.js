@@ -5,7 +5,7 @@ import { gql, useQuery } from '@apollo/client';
 import { UserCard } from '../components';
 import styled from 'styled-components';
 import Alert from '../components/Alert';
-import {ProfilePlaceholder} from "../components/Placeholders";
+import { ProfilePlaceholder } from '../components/Placeholders';
 
 const FETCH_USER = gql`
   query UserDetail($id: String!) {
