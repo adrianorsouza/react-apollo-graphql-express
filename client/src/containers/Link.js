@@ -5,7 +5,6 @@ import { Link as RRDLink } from 'react-router-dom';
 const LinkStyled = styled(RRDLink)`
   border-radius: var(--border-radius-default);
   &:hover {
-    // TODO REPLACE TO VAR
     background: var(--color-purple-500);
   }
 `;
